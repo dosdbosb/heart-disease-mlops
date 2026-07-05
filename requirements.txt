@@ -4,6 +4,9 @@ mlflow==3.14.0
 mlflow_skinny==3.14.0
 mlflow_tracing==3.14.0
 pandas<3
-scikit_learn==1.9.0
+scikit_learn==1.8.0
 seaborn==0.13.2
 ucimlrepo==0.0.7
+fastapi
+uvicorn
+prometheus-client

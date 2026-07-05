@@ -5,3 +5,6 @@ mlflow.db
 mlruns/
 mlartifacts/
 .ipynb_checkpoints/
+.~lock.*#
+kubectl
+minikube-linux-amd64
