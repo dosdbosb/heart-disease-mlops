@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+# Run this pipeline every time code is pushed to the main branch,
+# or when a pull request targets main
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get a copy of your repo's code onto this temporary machine
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Step 3: Install your project's dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest flake8
+
+      # Step 4: Linting — checks code style/quality, not logic correctness
+      - name: Lint with flake8
+        run: |
+          flake8 scripts/ tests/ --max-line-length=120 --extend-ignore=E203
+
+      # Step 5: Run the unit tests
+      - name: Run tests
+        run: |
+          pytest tests/ -v
