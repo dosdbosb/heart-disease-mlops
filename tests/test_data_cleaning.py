@@ -9,7 +9,7 @@ import os
 
 # Allows this test file to import from scripts/
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "scripts"))
-from clean_data import clean_data
+from clean_data import clean_data  # noqa: E402
 
 
 def make_sample_df():
@@ -27,7 +27,7 @@ def make_sample_df():
         "oldpeak": [2.3, 1.5, 1.4, 0.5],
         "slope": [3, 2, 1, 2],
         "ca": [0.0, 3.0, None, 1.0],   # one missing value on purpose
-        "thal": [6.0, 3.0, 3.0, None], # another missing value on purpose
+        "thal": [6.0, 3.0, 3.0, None],  # another missing value on purpose
         "num": [0, 2, 0, 1],           # includes a severity value > 1
     })
 
